@@ -1,0 +1,77 @@
+﻿@model ContatoModel
+@{
+    ViewData["Title"] = "Cadastrar contato";
+}
+
+<script>
+    function validarNumeros(event) {
+        var tecla = event.key;
+
+        if (!/^\d$/.test(tecla) && tecla !== "Backspace") {
+            event.preventDefault(); 
+        }
+    }
+
+    function criarContato() {
+       
+        var nome = $("#nome").val();
+        var celular = $("#celular").val();
+        var email = $("#email").val();
+
+        if (!nome || !email || !celular) {
+            alert("Todos os campos são obrigatórios.");
+            return;
+        }
+       
+        $.ajax({
+            url: "/Contato/CriarContato",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                Nome: nome,
+                Celular: celular,
+                Email: email
+            }),
+            success: function (response) {
+                debugger;
+                if (response.sucesso === true) {
+                    alert(response.mensagem);
+                    window.location.href = "/Contato/Index";
+                } else {
+                    alert(response.mensagem); 
+                }
+            },
+            error: function (xhr, status, error) {
+                debugger
+                console.error("Erro ao enviar o contato:", xhr.responseText);
+                alert("Ocorreu um erro ao enviar o contato.");
+            }
+        });
+    }
+
+
+</script>
+
+<div class="text-center">
+    <br />
+    <h1 class="display-4">Cadastrar contato</h1>
+    <br />
+</div>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="Nome" class="form-label">Nome</label>
+        <input type=text class="form-control" id="nome" placeholder="Digite o nome do contato">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Digite o email do contato">
+    </div>
+    <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input class="form-control" id="celular" maxlength="11" onkeydown="validarNumeros(event);" placeholder="Digite o telefone do contato (DDD + numeros)">
+    </div>
+    <button type="button" class="btn btn-success" onclick="criarContato();">Adicionar contato</button>
+    <a class="btn btn-secondary" id="voltar" asp-controller="Contato" asp-action="Index">Voltar</a>
+</form>
+

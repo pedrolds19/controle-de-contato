@@ -7,6 +7,7 @@ namespace ControleDeContatos.Repositorio
         ContatoModel ObterContato(int id);
         List<ContatoModel> BuscarContatos();
         ContatoModel Adicionar(ContatoModel contato);
-        void Editar(ContatoModel contato);
+        ContatoModel Editar(ContatoModel contato);
+        bool Excluir(int id);
     }
 }

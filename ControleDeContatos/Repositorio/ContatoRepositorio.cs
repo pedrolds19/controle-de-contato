@@ -31,11 +31,34 @@ namespace ControleDeContatos.Repositorio
             return _bancoContext.Contatos.ToList();
         }
 
-        public void Editar(ContatoModel contato)
+        public ContatoModel Editar(ContatoModel contato)
         {
-            throw new NotImplementedException();
+            ContatoModel contatoDB = ObterContato(contato.Id);
+
+            if (contatoDB == null) throw new System.Exception("Houve um erro na atualização do contato");
+
+            contatoDB.Nome = contato.Nome;
+            contatoDB.Email = contato.Email;
+            contatoDB.Celular = contato.Celular;
+
+            _bancoContext.Contatos.Update(contatoDB);
+            _bancoContext.SaveChanges();
+
+            return contatoDB;
         }
 
-  
+        public bool Excluir(int id)
+        {
+            ContatoModel contatoDB = ObterContato(id);
+
+            if (contatoDB == null) throw new System.Exception("Houve um erro na exclusão do contato");
+ 
+            _bancoContext.Contatos.Remove(contatoDB);
+            _bancoContext.SaveChanges();
+
+            return true;
+        }
+
+
     }
 }

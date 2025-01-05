@@ -17,10 +17,10 @@ namespace ControleDeContatos.Controllers
             return View(contatos);
         }
 
-         public IActionResult Criar()
-         {
-             return View();
-         }
+        public IActionResult Criar()
+        {
+            return View();
+        }
 
         public IActionResult Editar(int id)
         {
@@ -28,53 +28,31 @@ namespace ControleDeContatos.Controllers
             return View(contato);
         }
 
-        public IActionResult Apagar()
+        public IActionResult Apagar(int id)
         {
-            return View();
+            ContatoModel contato = _contatoRepositorio.ObterContato(id);
+            return View(contato); ;
         }
 
         [HttpPost]
-        public IActionResult CriarContato([FromBody] ContatoModel contato)
+        public IActionResult CriarContato(ContatoModel contato)
         {
-            if (contato == null || string.IsNullOrEmpty(contato.Nome) || string.IsNullOrEmpty(contato.Email) || string.IsNullOrEmpty(contato.Celular))
-            {
-                return Json(new { sucesso = false, mensagem = "Todos os campos são obrigatórios." });
-            }
-
-            try
-            {
-                // Adiciona o contato ao banco de dados
-                _contatoRepositorio.Adicionar(contato);
-
-                return Json(new { sucesso = true, mensagem = "Contato criado com sucesso!"});
-            }
-
-            catch (Exception ex)
-            {
-                return Json(new { sucesso = false, mensagem = $"Erro ao salvar o contato: {ex.Message}" });
-            }
+            _contatoRepositorio.Adicionar(contato);
+            return RedirectToAction("Index");
         }
 
-        //[HttpPost]
-        //public IActionResult EditarContato([FromBody] ContatoModel contato)
-        //{
-        //    if (contato == null || string.IsNullOrEmpty(contato.Nome) || string.IsNullOrEmpty(contato.Email) || string.IsNullOrEmpty(contato.Celular))
-        //    {
-        //        return Json(new { sucesso = false, mensagem = "Todos os campos são obrigatórios." });
-        //    }
+        [HttpPost]
+        public IActionResult EditarContato(ContatoModel contato)
+        {
+            _contatoRepositorio.Editar(contato);
+            return RedirectToAction("Index");
+        }
 
-        //    try
-        //    {
-        //        // Adiciona o contato ao banco de dados
-        //        _contatoRepositorio.Editar(contato);
+        public IActionResult ApagarContato(int id)
+        {
+            _contatoRepositorio.Excluir(id);
+            return RedirectToAction("Index");
+        }
 
-        //        return Json(new { sucesso = true, mensagem = "Contato criado com sucesso!" });
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { sucesso = false, mensagem = $"Erro ao salvar o contato: {ex.Message}" });
-        //    }
-        //}
     }
 }

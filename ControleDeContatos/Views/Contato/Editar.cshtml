@@ -25,15 +25,15 @@
     <input hidden asp-for="Id" />
     <div class="mb-3">
         <label for="Nome" class="form-label">Nome</label>
-        <input type=text asp-for="Nome" class="form-control" id="nome" placeholder="Digite o nome do contato">
+        <input type=text asp-for="Nome" class="form-control" id="nome" placeholder="Digite o nome do contato" required>
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Digite o email do contato">
+        <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Digite o email do contato" required>
     </div>
     <div class="mb-3">
         <label for="telefone" class="form-label">Telefone</label>
-        <input class="form-control" asp-for="Celular" id="celular" maxlength="11" onkeydown="validarNumeros(event);" placeholder="Digite o telefone do contato (DDD + numeros)">
+        <input class="form-control" type="tel" pattern="\d{11}" asp-for="Celular" id="celular" maxlength="11" onkeydown="validarNumeros(event);" placeholder="Digite seu telefone ddd+numero" required>
     </div>
     <button type="submit" class="btn btn-success">Alterar contato</button>
     <a class="btn btn-secondary" id="voltar" asp-controller="Contato" asp-action="Index">Voltar</a>

@@ -1,4 +1,6 @@
-﻿namespace ControleDeContatos.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ControleDeContatos.Models
 {
     public class ContatoModel
     {

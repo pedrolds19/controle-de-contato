@@ -37,21 +37,50 @@ namespace ControleDeContatos.Controllers
         [HttpPost]
         public IActionResult CriarContato(ContatoModel contato)
         {
-            _contatoRepositorio.Adicionar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                _contatoRepositorio.Adicionar(contato);
+                TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+
+                TempData["MensagemErro"] = $"Erro ao cadastrar o contato, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+
+            }
         }
 
         [HttpPost]
         public IActionResult EditarContato(ContatoModel contato)
         {
-            _contatoRepositorio.Editar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                _contatoRepositorio.Editar(contato);
+                TempData["MensagemSucesso"] = "Contato editado com sucesso";
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao editar o contato, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         public IActionResult ApagarContato(int id)
         {
-            _contatoRepositorio.Excluir(id);
-            return RedirectToAction("Index");
+            try
+            {
+                _contatoRepositorio.Excluir(id);
+                TempData["MensagemSucesso"] = "Contato excluido com sucesso";
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao excluir o contato, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
     }

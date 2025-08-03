@@ -20,10 +20,7 @@ Este é um projeto ASP.NET MVC para gerenciamento de contatos com funcionalidade
 
 ## 📷 Imagens
 
-![Listagem de Contatos](https://github.com/pedrolds19/controle-de-contato/assets/your-user/listagem.png)
-*Listagem dos contatos cadastrados*
-
-> Substitua o link da imagem acima por um link válido da aba "Issues" ou "Releases" do GitHub com a imagem hospedada.
+<img width="1918" height="953" alt="image" src="https://github.com/user-attachments/assets/aa2ffe67-8c6d-4148-9e28-8aea962c1bca" />
 
 ---
 

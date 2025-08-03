@@ -1,9 +1,49 @@
-Crud simples de cadastro de contatos
+# 📇 Controle de Contatos
 
-![image](https://github.com/user-attachments/assets/b28480cb-bd25-4779-8c0f-bccd9e785101)
-![image](https://github.com/user-attachments/assets/cb5c7693-4b94-4196-a00f-5a569b182ca7)
-![image](https://github.com/user-attachments/assets/b994e10b-04ca-4b2d-9723-a455ec104544)
-![image](https://github.com/user-attachments/assets/750cf80a-bca8-4a52-bbeb-86d891d63be4)
-![image](https://github.com/user-attachments/assets/efd86705-dad3-45d5-b8b5-56aa463a10a1)
-![image](https://github.com/user-attachments/assets/6d226857-72c3-4ca6-a168-6eff54eb47f9)
-![image](https://github.com/user-attachments/assets/33f932c3-a64f-4095-8c52-38492fc49dbf)
+Este é um projeto ASP.NET MVC para gerenciamento de contatos com funcionalidades completas de **CRUD** (Criar, Ler, Atualizar e Deletar).
+
+## ✨ Funcionalidades
+
+- ✅ Adicionar novo contato
+- 📄 Listar todos os contatos cadastrados
+- ✏️ Editar dados de um contato existente
+- ❌ Apagar contatos
+- 🔍 Validação de dados nos formulários
+
+## 🛠️ Tecnologias Utilizadas
+
+- ASP.NET MVC (.NET 6)
+- Entity Framework Core
+- SQL Server
+- Razor Pages
+- HTML/CSS/Bootstrap
+
+## 📷 Imagens
+
+![Listagem de Contatos](https://github.com/pedrolds19/controle-de-contato/assets/your-user/listagem.png)
+*Listagem dos contatos cadastrados*
+
+> Substitua o link da imagem acima por um link válido da aba "Issues" ou "Releases" do GitHub com a imagem hospedada.
+
+---
+
+## 🚀 Como Executar
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/pedrolds19/controle-de-contato.git
+   ```
+2. Abra o projeto no Visual Studio.
+
+3. Configure a string de conexão em appsettings.json:
+"ConnectionStrings": {
+  "DefaultConnection": "Server=SEU_SERVIDOR;Database=ControleDeContatos;Trusted_Connection=True;"
+}
+
+4. Aplique as migrations para gerar o banco de dados:
+Update-Database
+
+5.Execute o projeto (Ctrl + F5) e acesse no navegador:
+https://localhost:xxxx
+
+

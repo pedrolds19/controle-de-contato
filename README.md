@@ -4,11 +4,11 @@ Este é um projeto ASP.NET MVC para gerenciamento de contatos com funcionalidade
 
 ## Funcionalidades
 
-- ✅ Adicionar novo contato
-- 📄 Listar todos os contatos cadastrados
-- ✏️ Editar dados de um contato existente
-- ❌ Apagar contatos
-- 🔍 Validação de dados nos formulários
+- Adicionar novo contato
+- Listar todos os contatos cadastrados
+- Editar dados de um contato existente
+- Apagar contatos
+- Validação de dados nos formulários
 
 ## Tecnologias Utilizadas
 
